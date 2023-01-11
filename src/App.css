@@ -1,0 +1,429 @@
+.App {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  background-color: #eaddcd;
+}
+
+.chatContainer {
+  width: auto;
+  height: 350px;
+  border: 2px solid #162e4d;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+
+.chatContainer .messages {
+  flex: 80%;
+  width: 100%;
+  padding-left: 20px;
+  overflow-y: auto;
+}
+
+.chatContainer .messageInputs {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.chatContainer .messageInputs input {
+  flex: 80%;
+  height: calc(100% -5px);
+  border: none;
+  border-top: 2px solid #162e4d;
+  padding-left: 20px;
+  font-size: 20px;
+}
+
+.chatContainer .messageInputs button {
+  flex: 20%;
+  height: 100%;
+  background-color: #162e4d;
+  border: none;
+  color: white;
+  font-size: 18px;
+}
+
+.messageContainer {
+  display: flex;
+  width: calc(100% - 30px);
+}
+
+.messageContainer h1 {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+}
+
+#You {
+  justify-content: flex-start;
+}
+
+#Other {
+  justify-content: flex-end;
+}
+
+#Other .messageIndividual {
+  background-color: #cc6744;
+  color: black;
+}
+
+.messageIndividual {
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
+  background-color: #162e4d;
+  opacity: 0.9;
+  color: white;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.cust-picker > div::first-line {
+  visibility: hidden;
+}
+
+.rmdp-input {
+  height: 60px !important;
+  width: 100% !important;
+}
+
+.rmdp-container {
+  width: 100% !important;
+}
+
+.inner-menu-box {
+}
+
+.inner-menu-box .nav-pills .nav-link.active {
+  background: #162e4d;
+}
+
+.inner-menu-box .nav-pills .nav-link {
+  font-size: 18px;
+}
+
+.inner-menu-box .nav-pills .nav-link:hover {
+  background: #162e4d;
+  color: #eaddcd;
+}
+
+.active-btn {
+  color: #eaddcd !important;
+  background-color: #162e4d !important;
+  border-color: #162e4d !important;
+}
+
+.btn.btn-common:hover {
+  color: #eaddcd;
+  background-color: #162e4d;
+  border-color: #162e4d;
+}
+
+.btn.btn-common {
+  color: #162e4d;
+  background-color: transparent;
+  background-image: none;
+  border-color: #162e4d;
+}
+
+/* drink tabe */
+.tab-drink {
+  color: #162e4d;
+  border: 1px solid black;
+  /* width: 123px; */
+  height: 84px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tab-drink:hover {
+  background-color: #162e4d;
+  color: #cc6744;
+  border: 1px solid black;
+}
+
+.tab-drink-active {
+  background-color: #162e4d;
+  color: #cc6744;
+  border: 1px solid black;
+}
+
+/* menu tab  */
+.menu-border {
+  border: 1.5px solid #162e4d;
+}
+
+.tab-menu {
+  color: #162e4d;
+  cursor: pointer;
+  font-weight: 500;
+  height: 60px;
+}
+
+.tab-menu:hover {
+  background-color: #162e4d;
+  color: #cc6744;
+  transform: translateX(20px);
+}
+
+.tab-menu:hover:before {
+  background-color: #cc6744;
+  content: "";
+  display: inline-block;
+  height: 4px;
+  position: relative;
+  vertical-align: middle;
+  padding-right: 2px;
+  width: 30px;
+}
+
+.tab-menu:hover:before {
+  right: 0.5em;
+  margin-left: -12px;
+}
+
+.tab-menu-active {
+  background-color: #162e4d;
+  color: #cc6744;
+  transform: translateX(20px);
+}
+
+.tab-menu-active:before {
+  background-color: #cc6744;
+  content: "";
+  display: inline-block;
+  height: 4px;
+  position: relative;
+  vertical-align: middle;
+  padding-right: 2px;
+  width: 30px;
+}
+
+.tab-menu-active:before {
+  right: 0.5em;
+  margin-left: -12px;
+}
+
+#image {
+  width: 10%;
+  margin-top: -2%;
+  padding-left: 2%;
+  padding-right: 2%;
+  background-color: gray;
+}
+
+/* menu color */
+.menu-color {
+  color: #cc6744;
+}
+
+.spacing {
+  letter-spacing: 1px;
+}
+
+.spoon {
+  height: 90px;
+}
+
+.footer-line-height {
+  line-height: 0.6;
+}
+
+.heading-color {
+  color: #162e4d;
+}
+
+.footer-subheading-color {
+  color: #272728;
+  line-height: normal;
+}
+
+.subheading-text {
+  color: #8f9ea9;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .footer-pad {
+    margin-top: 50px !important;
+  }
+}
+
+.linebetween {
+  overflow: hidden;
+  text-align: center;
+}
+
+.linebetween:before {
+  background-color: #cc6744;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 20%;
+}
+
+.linebetween:before {
+  right: 0.5em;
+  margin-left: 10px;
+}
+
+/* Animation */
+.animation {
+  animation: fadeInRight 0.5s ease-in-out;
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeInUp {
+  animation: fadeInUp 0.5s ease-in-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translatey(100px);
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+.fadeOut {
+  animation: fadeOut 1s ease-in-out;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.card-fadein {
+  animation: card-fadein 0.5s ease-in-out;
+}
+
+@keyframes card-fadein {
+  from {
+    opacity: 0;
+    transform: translatey(100px);
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeUp {
+  animation: fadeUp 0.5s ease-in-out;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translatey(80px);
+    transform: translatex(30px);
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.nave-bar {
+  height: 100px;
+  border-bottom: 1px solid #162e4d;
+}
+
+
+.borderRadious {
+  border-radius: 0px !important;
+}
+
+.login {
+  background: #162e4d;
+  color: white !important;
+  margin-left: 8px;
+}
+
+.opacity {
+  opacity: 90%;
+}
+
+.border-img {
+  position: absolute;
+  left: 95%;
+  top: 29%;
+  padding: 10px 0px;
+}
+
+/* Background */
+#tea {
+  position: fixed;
+  top: 55px;
+  left: 17px;
+}
+
+#donut {
+  position: fixed;
+  top: 50%;
+  left: -36px;
+}
+
+#coffee {
+  position: fixed;
+  bottom: 13%;
+  left: 55px;
+}
+
+#popcorn {
+  position: fixed;
+  right: 0%;
+  top: 7%;
+}
+
+#lemon {
+  position: fixed;
+  right: -4%;
+  top: 35%;
+}
+
+#drink {
+  position: fixed;
+  right: 6%;
+  top: 70%;
+}
