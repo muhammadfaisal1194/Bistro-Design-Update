@@ -27,6 +27,12 @@ import {
   TextField,
   IconButton,
   TablePagination,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Button,
 } from "@mui/material";
 
 const Subcategories = () => {
@@ -35,10 +41,23 @@ const Subcategories = () => {
   const [snacks, setSnacks] = React.useState([]);
   const [newSubCategory, setnewSubCategory] = React.useState("");
   const [selectedCategory, setSelectedCategory] = React.useState("");
+  const [selectedSubCategory, setSelectedSubCategory] = React.useState(null);
+  const [selectedSubCategoryName, setSelectedSubCategoryName] =
+    React.useState(null);
   const [menus, setMenus] = useState(null);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [subCategories, setsubCategories] = React.useState([]);
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpen(false);
+  };
+
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -97,6 +116,25 @@ const Subcategories = () => {
         `${API_URL}/subcategory/delete/${id}`
       );
       fetchSubCategoreis();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleUpdate = async (id) => {
+    try {
+      const data = {
+        name: selectedSubCategoryName,
+      };
+
+      const response = await axios.put(
+        `${API_URL}/subcategory/update/${selectedSubCategory}`,
+        data
+      );
+      if (response) {
+        fetchSubCategoreis();
+        handleCloseDialog();
+      }
     } catch (error) {
       console.log(error);
     }
@@ -180,20 +218,20 @@ const Subcategories = () => {
                       {menu.name}
                     </TableCell>
                     <TableCell>
-                      {/* <Tooltip title="Edit">
+                      <Tooltip title="Edit">
                         <IconButton
                           sx={{ marginLeft: 1 }}
                           edge="end"
                           aria-label="update"
                           onClick={() => {
-                            navigate(`/dashboard/editproduct/${menu._id}`, {
-                              replace: true,
-                            });
+                            setSelectedSubCategory(menu._id);
+                            setSelectedSubCategoryName(menu.name);
+                            handleClickOpen();
                           }}
                         >
                           <EditIcon />
                         </IconButton>
-                      </Tooltip> */}
+                      </Tooltip>
                       <Tooltip title="Delete">
                         <IconButton
                           sx={{ marginLeft: 1 }}
@@ -216,20 +254,18 @@ const Subcategories = () => {
                       {menu.name}
                     </TableCell>
                     <TableCell>
-                      {/* <Tooltip title="Edit">
+                      <Tooltip title="Edit">
                         <IconButton
                           sx={{ marginLeft: 1 }}
                           edge="end"
                           aria-label="update"
                           onClick={() => {
-                            navigate(`/dashboard/editproduct/${menu._id}`, {
-                              replace: true,
-                            });
+                            handleClickOpen();
                           }}
                         >
                           <EditIcon />
                         </IconButton>
-                      </Tooltip> */}
+                      </Tooltip>
                       <Tooltip title="Delete">
                         <IconButton
                           sx={{ marginLeft: 1 }}
@@ -255,6 +291,27 @@ const Subcategories = () => {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </TableContainer>
+
+      <Dialog open={open} onClose={handleCloseDialog}>
+        <DialogTitle>Update SubCategory</DialogTitle>
+        <DialogContent>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Sub Category"
+            type="text"
+            fullWidth
+            variant="outlined"
+            value={selectedSubCategoryName}
+            onChange={(e) => setSelectedSubCategoryName(e.target.value)}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseDialog}>Cancel</Button>
+          <Button onClick={handleUpdate}>Update</Button>
+        </DialogActions>
+      </Dialog>
     </Container>
   );
 };
