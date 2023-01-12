@@ -32,9 +32,7 @@ const AddMenu = () => {
   const [price, setPrice] = React.useState(null);
   const [freeItem, setFreeItem] = React.useState("");
   const today = new Date();
-  const tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  const [values, setValues] = React.useState([today, tomorrow]);
+  const [values, setValues] = React.useState([today]);
 
   const createMenuSchema = Yup.object().shape({
     name: Yup.string().required("Name is required"),
@@ -81,7 +79,7 @@ const AddMenu = () => {
         let d = values[i];
         let date = null;
         if (d.month) {
-          date = new Date(d.year, d.month.number - 1, d.day);
+          date = new Date(d.year, d.month.number - 1, d.day + 1);
         }
         if (date) {
           dates.push(date);
@@ -92,11 +90,6 @@ const AddMenu = () => {
     }
 
     console.log("datessssss", dates);
-
-    if (!thumbnail) {
-      toast.error("Please select the file!");
-      return;
-    }
 
     if (!price) {
       toast.error("Please enter menu price!");
@@ -118,7 +111,6 @@ const AddMenu = () => {
       const formData = new FormData();
       formData.append("dates", JSON.stringify(dates));
       formData.append("items", JSON.stringify(items));
-      formData.append("thumbnail", thumbnail);
       formData.append("price", price);
       formData.append("freeItem", freeItem);
 
@@ -126,7 +118,7 @@ const AddMenu = () => {
       console.log(response);
       toast.success(response.data.message);
       setTimeout(() => {
-        navigate("/dashboard/allmenus");
+        // navigate("/dashboard/allmenus");
       }, 1000);
       setItems([]);
       setValue([null, null]);
@@ -159,52 +151,6 @@ const AddMenu = () => {
         />
       </div>
 
-      <Box sx={{ mt: 5 }}>
-        <Button
-          sx={{
-            background: "#162e4d",
-            ":hover": { backgroundColor: "#002655", color: "#fff" },
-          }}
-          variant="contained"
-          component="label"
-          startIcon={<CloudUploadIcon />}
-        >
-          Upload Thumbnail
-          <input
-            type="file"
-            accept="image/*"
-            onChange={(event) => {
-              setFileName(event.target.files[0].name);
-              setThumbnail(event.target.files[0]);
-              var reader = new FileReader();
-
-              //Read the contents of Image File.
-              reader.readAsDataURL(event.target.files[0]);
-              reader.onload = function(e) {
-                //Initiate the JavaScript Image object.
-                var image = new Image();
-
-                //Set the Base64 string return from FileReader as source.
-                image.src = e.target.result;
-
-                //Validate the File Height and Width.
-                image.onload = function() {
-                  var height = this.height;
-                  var width = this.width;
-                  console.log("width", width);
-                  console.log("height", height);
-                  if (height > 1000 || width > 1000) {
-                    alert("Height and Width must not exceed 100px.");
-                    return false;
-                  }
-                };
-              };
-            }}
-            hidden
-          />
-        </Button>
-        <span style={{ marginLeft: 15 }}>{fileName}</span>
-      </Box>
       <TextField
         variant="outlined"
         margin="normal"
@@ -218,7 +164,7 @@ const AddMenu = () => {
         variant="outlined"
         margin="normal"
         fullWidth
-        label="Free Item"
+        label="Optional description"
         name="freeItem"
         value={freeItem}
         onChange={(e) => setFreeItem(e.target.value)}
