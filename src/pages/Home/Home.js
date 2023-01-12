@@ -207,7 +207,7 @@ const Home = () => {
       <div>
         <RenderdHeader />
       </div>
-      <div className="row" style={{ margin: "0", background: state.bgColor }}>
+      <div className="row" style={{ margin: "0", paddingTop:"5%",background: state.bgColor }}>
         <div className="col-md-2 pt-5">
           <div className="nav flex-column ps-1 pe-4 py-4 menu-border spacing fs-4 position-fixed">
             <div style={{ width: "147px", marginRight: "10px" }}>
@@ -295,6 +295,7 @@ const Home = () => {
           </>
         )}
       </div>
+      
     </>
   );
 };

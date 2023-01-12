@@ -211,6 +211,22 @@
   margin-left: -12px;
 }
 
+.line:before {
+  background-color: #cc6744;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  padding-right: 2px;
+  width: 160px;
+}
+
+.line:before {
+  right: 0.5em;
+  margin-left: -12px;
+}
+
 #image {
   width: 10%;
   margin-top: -2%;
@@ -426,4 +442,13 @@
   position: fixed;
   right: 6%;
   top: 70%;
+}
+.payment{
+  border: 1px solid #CC6744;
+  width: 25%;
+  text-align: center;
+  background: #FFF4F1;
+  color: #CC6744;
+  padding: 5px;
+  cursor: pointer;
 }

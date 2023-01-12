@@ -50,7 +50,7 @@ const CartEmpty = () => {
         </div>
         <h6 className="footer-heading-colo">Your cart is empty!</h6>
         <p className="footer-subheading-text">
-          Looks like you haven't added anything to your cart. Go ahead & explore
+          Looks like you haven't added anything to your cart. <br/>Go ahead & explore
           some items.
         </p>
       </div>

@@ -1,3 +1,4 @@
+import { color } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -170,7 +171,7 @@ const Menu = ({ day, buffets, buffetPrice }) => {
           </svg>
         </div>
 
-        <div className="menu-color mt-3 " style={{ width: "25rem" }}>
+        <div className=" mt-3 " style={{ width: "25rem", color:"#ffb5a1"}}>
           {buffets.map((item) => (
             <p>
               <span>{item.name}</span>
@@ -178,20 +179,13 @@ const Menu = ({ day, buffets, buffetPrice }) => {
           ))}
         </div>
       </div>
-      <div className="d-flex justify-content-center">
-        <h6>Menu Price {buffetPrice}$</h6>
-      </div>
-      <div className="d-flex justify-content-center">
-        <button
-          type="button"
-          className="btn btn-sm borderRadious mb-5"
-          style={{ background: "#CC6744", color: "white" }}
-          onClick={() => {
-            checkoutHandler();
-          }}
-        >
-          Proceed to payment
-        </button>
+      <div className="d-flex justify-content-center pb-5">
+        <span className="line"></span>
+        <div className="payment" onClick={() => {
+          checkoutHandler();
+        }}>
+          €{buffetPrice} only for per person
+        </div>
       </div>
       <ToastContainer />
     </div>

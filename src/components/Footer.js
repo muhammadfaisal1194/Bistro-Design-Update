@@ -5,8 +5,8 @@ const Footer = () => {
   return (
     <>
       <div
-        className="row border-top border-bottom py-4 px-4"
-        style={{ margin: "0" }}
+        className="row  py-4 px-4"
+        style={{ margin: "0", borderTop:"1px solid black" , borderBottom:"1px solid black"}}
       >
         <div className="col-md-4">
           <h3 className="pb-3 heading-color spacing">About Us</h3>
@@ -121,7 +121,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className=" px-4 py-1">
+      <div className=" px-4 py-4 ">
         All Rights Reserved. © 2022 Bistro Koo Visukoonti
       </div>
     </>
