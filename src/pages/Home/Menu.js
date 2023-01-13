@@ -179,7 +179,7 @@ const Menu = ({ day, buffets, buffetPrice }) => {
           ))}
         </div>
       </div>
-      <div className="d-flex justify-content-center pb-5">
+      <div className="d-flex justify-content-end pb-5 " style={{paddingRight:"12%"}}>
         <span className="line"></span>
         <div className="payment" onClick={() => {
           checkoutHandler();
