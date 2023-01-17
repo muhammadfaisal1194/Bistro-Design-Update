@@ -49,7 +49,7 @@ const Card = ({ item }) => {
               {item.name}
               {/* <p className="fs-6 text-secondary">Lemon & sugar</p> */}
             </div>
-            <div className=" fs-2 fw-bold menu-color">${item.price}</div>
+            <div className=" fs-2 fw-bold menu-color">€{item.price}</div>
           </div>
           <button
             className="btn borderRadious"

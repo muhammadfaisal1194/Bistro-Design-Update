@@ -125,7 +125,7 @@ const AddMenu = () => {
       setFileName(null);
       setThumbnail(null);
       setPrice(null);
-      setFreeItem(null);
+      setFreeItem("");
       return response;
     } catch (error) {
       toast.error(error.response.data.message);

@@ -452,3 +452,16 @@
   padding: 5px;
   cursor: pointer;
 }
+.Accordion{
+  min-width:  12.7rem;
+  border: 1px solid #162e4d !important;
+  color: #162e4d !important;
+  background: transparent !important;
+  border-radius: 10px;
+}
+.Dash-btn{
+  min-width: 200px;
+  min-height: 3rem;
+  text-align: start !important;
+  text-indent: 13px;
+}

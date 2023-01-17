@@ -31,7 +31,6 @@ const EditMenu = () => {
   const [createOrUpdate, setCreateOrUpdate] = React.useState(true);
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const [freeItem, setFreeItem] = React.useState("");
-  const [thumbnail, setThumbnail] = React.useState(null);
   const [price, setPrice] = React.useState(null);
   const today = new Date();
   const tomorrow = new Date();
@@ -118,10 +117,7 @@ const EditMenu = () => {
       }
     }
 
-    if (!thumbnail) {
-      toast.error("Please select the file!");
-      return;
-    }
+
 
     if (!price) {
       toast.error("Please enter menu price!");
@@ -143,7 +139,6 @@ const EditMenu = () => {
       const formData = new FormData();
       formData.append("dates", JSON.stringify(dates));
       formData.append("items", JSON.stringify(items));
-      formData.append("thumbnail", thumbnail);
       formData.append("price", price);
       formData.append("freeItem", freeItem);
 
@@ -160,7 +155,6 @@ const EditMenu = () => {
       setItems([]);
       setValue([null, null]);
       setFileName(null);
-      setThumbnail(null);
       setPrice(null);
       setFreeItem(null);
       return response;
@@ -187,30 +181,6 @@ const EditMenu = () => {
           plugins={[<DatePanel />]}
         />
       </div>
-
-      <Box sx={{ mt: 5 }}>
-        <Button
-          sx={{
-            background: "#162e4d",
-            ":hover": { backgroundColor: "#002655", color: "#fff" },
-          }}
-          variant="contained"
-          component="label"
-          startIcon={<CloudUploadIcon />}
-        >
-          Upload Thumbnail
-          <input
-            type="file"
-            accept="image/*"
-            onChange={(event) => {
-              setFileName(event.target.files[0].name);
-              setThumbnail(event.target.files[0]);
-            }}
-            hidden
-          />
-        </Button>
-        <span style={{ marginLeft: 15 }}>{fileName}</span>
-      </Box>
       <TextField
         variant="outlined"
         margin="normal"

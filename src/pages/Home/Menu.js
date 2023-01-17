@@ -173,7 +173,7 @@ const Menu = ({ day, buffets, buffetPrice }) => {
 
         <div className=" mt-3 " style={{ width: "25rem", color:"#ffb5a1"}}>
           {buffets.map((item) => (
-            <p>
+            <p style={{fontSize:"20px"}}>
               <span>{item.name}</span>
             </p>
           ))}
@@ -184,7 +184,7 @@ const Menu = ({ day, buffets, buffetPrice }) => {
         <div className="payment" onClick={() => {
           checkoutHandler();
         }}>
-          €{buffetPrice} only for per person
+          €{buffetPrice} per person
         </div>
       </div>
       <ToastContainer />

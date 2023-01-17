@@ -122,7 +122,7 @@ const Footer = () => {
         </div>
       </div>
       <div className=" px-4 py-4 ">
-        All Rights Reserved. © 2022 Bistro Koo Visukoonti
+        All Rights Reserved. © {new Date().getFullYear()} Bistro Koo Visukoonti
       </div>
     </>
   );

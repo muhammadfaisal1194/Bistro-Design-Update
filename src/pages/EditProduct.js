@@ -60,7 +60,7 @@ const EditProduct = () => {
             setLoading(false);
             toast.success("Product Edited Successfully!");
             setTimeout(() => {
-              navigate("/dashboard/allmenus");
+              navigate("/dashboard/allproducts");
             }, 1500);
           }, 500);
         }
