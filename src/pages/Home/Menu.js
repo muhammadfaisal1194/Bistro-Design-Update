@@ -173,7 +173,7 @@ const Menu = ({ day, buffets, buffetPrice }) => {
 
         <div className=" mt-3 " style={{ width: "25rem", color:"#ffb5a1"}}>
           {buffets.map((item) => (
-            <p style={{fontSize:"20px"}}>
+            <p style={{fontSize:"20px" , fontWeight:500 , fontStyle:"italic" , letterSpacing:"1px"}}>
               <span>{item.name}</span>
             </p>
           ))}
