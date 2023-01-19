@@ -38,6 +38,7 @@ const EditProduct = () => {
   const [drinks, setDrinks] = React.useState([]);
   const [snacks, setSnacks] = React.useState([]);
   const navigate = useNavigate();
+
   const createMenuSchema = Yup.object().shape({
     name: Yup.string().required("Product name is required"),
     description: Yup.string().required("Product description is required"),
@@ -46,6 +47,7 @@ const EditProduct = () => {
     subType: Yup.string().notRequired(),
     thumbnail: Yup.mixed().notRequired(),
   });
+
   const createMenuFormik = useFormik({
     enableReinitialize: true,
     initialValues: menu,
@@ -69,6 +71,7 @@ const EditProduct = () => {
       }
     },
   });
+
   const updateMenuHandler = async (values) => {
     try {
       const formData = new FormData();
@@ -76,6 +79,7 @@ const EditProduct = () => {
       formData.append("description", values.description);
       formData.append("price", values.price);
       formData.append("type", values.type);
+      formData.append("subType", values.subType);
       formData.append("thumbnail", values.thumbnail);
       const response = await axios.put(
         `${API_URL}/items/update/${selectedMenu}`,
@@ -87,6 +91,7 @@ const EditProduct = () => {
       console.log(error);
     }
   };
+
   const fetchSingleMenu = async () => {
     const response = await axios.get(`${API_URL}/items/view/${selectedMenu}`);
     console.log("response", response);
@@ -96,9 +101,11 @@ const EditProduct = () => {
       price: response.data.data.price,
       description: response.data.data.description,
       type: response.data.data.type,
-      type: response.data.data.subType,
+      subType: response.data.data.subType,
     });
+    setSelectedCategory(response.data.data.type);
   };
+
   const fetchSubCategoreis = async () => {
     try {
       const response = await axios.get(`${API_URL}/subcategory/index`);
@@ -118,6 +125,7 @@ const EditProduct = () => {
       console.log(error);
     }
   };
+
   const createSubCategory = async () => {
     try {
       const response = await axios.post(`${API_URL}/subcategory/create`, {
@@ -130,10 +138,15 @@ const EditProduct = () => {
       console.log(error);
     }
   };
+
   useEffect(() => {
     fetchSubCategoreis();
     fetchSingleMenu();
   }, []);
+
+  useEffect(() => {
+    console.log("menu after update", createMenuFormik.values);
+  }, [menu]);
 
   return (
     <>
@@ -209,7 +222,6 @@ const EditProduct = () => {
           {createMenuFormik.touched.type && createMenuFormik.errors.type ? (
             <div style={{ color: "#da5455" }}>Menu type is required</div>
           ) : null}
-
           {!(selectedCategory == "Buffet") ? (
             <>
               <FormControl fullWidth sx={{ marginTop: "20px" }}>
@@ -219,7 +231,7 @@ const EditProduct = () => {
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={createMenuFormik.values.subType}
+                  value={createMenuFormik.values.subType || ""}
                   label="Select Menu Type"
                   onChange={(e) => {
                     console.log("e: => ", e.target.value);
@@ -233,13 +245,13 @@ const EditProduct = () => {
                       createMenuFormik.errors.subType
                   )}
                 >
-                  {selectedCategory === "Drinks" &&
+                  {selectedCategory == "Drinks" &&
                     drinks.map((category) => (
                       <MenuItem value={category._id} key={category._id}>
                         {category.name}
                       </MenuItem>
                     ))}
-                  {selectedCategory === "Snacks" &&
+                  {selectedCategory == "Snacks" &&
                     snacks.map((category) => (
                       <MenuItem value={category._id} key={category._id}>
                         {category.name}
@@ -289,7 +301,7 @@ const EditProduct = () => {
             name="price"
             autoFocus
             onChange={createMenuFormik.handleChange("price")}
-            value={createMenuFormik.price}
+            value={createMenuFormik.values.price}
             error={Boolean(
               createMenuFormik.touched.price && createMenuFormik.errors.price
             )}
@@ -367,7 +379,7 @@ const EditProduct = () => {
                 variant="contained"
                 type="submit"
               >
-                Update Menu
+                Update Product
               </Button>
             )}
           </Box>
