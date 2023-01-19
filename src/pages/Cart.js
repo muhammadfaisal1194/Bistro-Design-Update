@@ -18,6 +18,7 @@ import {
 } from "./../redux/cart";
 import { Button } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
+import { setBgColor } from "./../redux/layout";
 
 const Cart = () => {
   const state = useSelector((state) => state.layout);
@@ -93,8 +94,10 @@ const Cart = () => {
       setBack("Menu");
     } else if (state.selectedTab === 2) {
       setBack("Drinks");
+      dispatch(setBgColor("rgba(143, 158, 169,0.5)"));
     } else if (state.selectedTab === 3) {
       setBack("Snacks");
+      dispatch(setBgColor("rgba(204, 103, 68,0.5)"));
     }
   }, []);
 

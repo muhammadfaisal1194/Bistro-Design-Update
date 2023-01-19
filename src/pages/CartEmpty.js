@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
+import { setBgColor } from "./../redux/layout";
 const CartEmpty = () => {
   const state = useSelector((state) => state.layout);
+  const dispatch = useDispatch();
   const [back, setBack] = useState("");
 
   useEffect(() => {
@@ -13,8 +14,10 @@ const CartEmpty = () => {
       setBack("Menu");
     } else if (state.selectedTab === 2) {
       setBack("Drinks");
+      dispatch(setBgColor("rgba(143, 158, 169,0.5)"));
     } else if (state.selectedTab === 3) {
       setBack("Snacks");
+      dispatch(setBgColor("rgba(204, 103, 68,0.5)"));
     }
   }, []);
 
@@ -50,8 +53,8 @@ const CartEmpty = () => {
         </div>
         <h6 className="footer-heading-colo">Your cart is empty!</h6>
         <p className="footer-subheading-text">
-          Looks like you haven't added anything to your cart. <br/>Go ahead & explore
-          some items.
+          Looks like you haven't added anything to your cart. <br />
+          Go ahead & explore some items.
         </p>
       </div>
     </>
