@@ -6,7 +6,11 @@ const Footer = () => {
     <>
       <div
         className="row  py-4 px-4"
-        style={{ margin: "0", borderTop:"1px solid black" , borderBottom:"1px solid black"}}
+        style={{
+          margin: "0",
+          borderTop: "1px solid black",
+          borderBottom: "1px solid black",
+        }}
       >
         <div className="col-md-4">
           <h3 className="pb-3 heading-color spacing">About Us</h3>
@@ -16,7 +20,7 @@ const Footer = () => {
           <div className="d-flex">
             <div className="border border-dark">
               <a
-                href="https://web.facebook.com"
+                href="https://www.facebook.com/BistroKoo"
                 rel="noreferrer"
                 target="_blank"
               >
