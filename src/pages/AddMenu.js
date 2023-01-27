@@ -72,8 +72,6 @@ const AddMenu = () => {
   const createMenuHandler = async () => {
     let dates = [];
 
-    console.log("valuessss", values);
-
     if (values.length > 0) {
       for (let i = 0; i < values.length; i++) {
         let d = values[i];
@@ -88,8 +86,6 @@ const AddMenu = () => {
         }
       }
     }
-
-    console.log("datessssss", dates);
 
     if (!price) {
       toast.error("Please enter menu price!");
@@ -118,7 +114,7 @@ const AddMenu = () => {
       console.log(response);
       toast.success(response.data.message);
       setTimeout(() => {
-        // navigate("/dashboard/allmenus");
+        navigate("/dashboard/allmenus");
       }, 1000);
       setItems([]);
       setValue([null, null]);
