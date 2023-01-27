@@ -20,7 +20,7 @@ const Footer = () => {
           <div className="d-flex">
             <div className="border border-dark">
               <a
-                href="https://web.facebook.com"
+                href="https://www.facebook.com/BistroKoo"
                 rel="noreferrer"
                 target="_blank"
               >
