@@ -7,8 +7,8 @@ const PaymentSuccess = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      navigate('/')
-    }, 500)
+      navigate("/");
+    }, 3000);
   }, []);
 
   return (
