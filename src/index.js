@@ -29,6 +29,9 @@ import EditProduct from "./pages/EditProduct";
 import EditMenu from "./pages/EditMenu";
 import EditOrder from "./pages/EditOrder";
 import ViewOrder from "./pages/ViewOrder";
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
